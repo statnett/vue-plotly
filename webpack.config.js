@@ -2,16 +2,6 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
 
-// babel:
-// include: __dirname,
-// exclude: /node_modules/
-// {
-//   test: /\.css$/,
-//   use: [{
-//     loader: 'style!less!css'
-//   }]
-// }
-
 var config = {
   output: {
     path: path.resolve(path.join(__dirname, '/dist/'))

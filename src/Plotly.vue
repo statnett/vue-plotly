@@ -1,9 +1,10 @@
 <template>
-<div ref="container" />
+<div ref="container" class="vue-plotly"/>
 </template>
 <script>
 import Plotly from 'plotly.js'
-import _ from 'lodash'
+import debounce from 'lodash/debounce'
+import defaults from 'lodash/defaults'
 
 const events = [
   'click',
@@ -51,14 +52,11 @@ export default {
     },
     layout: {
       type: Object
-    },
-    buttons: {
-      type: Array
     }
   },
   data() {
     return {
-      internalLayout: _.cloneDeep(this.layout)
+      internalLayout: this.layout
     }
   },
   mounted() {
@@ -66,6 +64,7 @@ export default {
     this.initEvents()
 
     this.$watch('data', this.newPlot, { deep: !this.watchShallow })
+    this.$watch('options', this.newPlot, { deep: !this.watchShallow })
     this.$watch('layout', this.relayout, { deep: !this.watchShallow })
   },
   beforeDestroy() {
@@ -76,7 +75,7 @@ export default {
   methods: {
     initEvents() {
       if (this.autoResize) {
-        this.__resizeListener = _.debounce(this.plot, 200)
+        this.__resizeListener = debounce(this.plot, 200)
         window.addEventListener('resize', this.__resizeListener)
       }
 
@@ -84,20 +83,20 @@ export default {
         return {
           eventName: eventName,
           fullName: 'plotly_' + eventName,
-          listener: (...args) => {
+          handler: (...args) => {
             this.$emit.apply(this, [eventName].concat(args))
           }
         }
       })
 
       this.__generalListeners.forEach((obj) => {
-        this.$refs.container.on(obj.fullName, obj.listener)
+        this.$refs.container.on(obj.fullName, obj.handler)
       })
     },
     ...methods,
     toImage(options) {
       var el = this.$refs.container
-      var opts = _.defaults(options, {
+      var opts = defaults(options, {
         format: 'png',
         width: el.clientWidth,
         height: el.clientHeight
@@ -107,7 +106,7 @@ export default {
     },
     downloadImage(options) {
       var el = this.$refs.container
-      var opts = _.defaults(options, {
+      var opts = defaults(options, {
         format: 'png',
         width: el.clientWidth,
         height: el.clientHeight,
