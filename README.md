@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-npm install vue-plotly --save
+npm install vue-plotly plotly.js --save
 ```
 
 Then use it as a module:
@@ -16,7 +16,7 @@ import VuePlotly from 'vue-plotly'
 
 To use vue-plotly with webpack you should see [this example repo](https://github.com/plotly/plotly-webpack) for how to make that work.
 
-In short, add `ify-loader` and `transform-loader` and add the following to your webpack config:
+In short, install `ify-loader` and `transform-loader` and add the following to your webpack config:
 
 ```js
 module: {
