@@ -4,7 +4,7 @@
   "description": "A vue wrapper for plotly.js",
   "main": "dist/vue-plotly.js",
   "scripts": {
-    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run && npm run coverage",
     "develop": "cross-env BABEL_ENV=test karma start test/karma.dev.conf.js",
     "coverage": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
