@@ -12,6 +12,10 @@
     "type": "git",
     "url": "https://github.com/statnett/vue-plotly.git"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "keywords": [
     "chart",
     "plotly",
