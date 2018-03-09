@@ -1163,10 +1163,10 @@ var methods = functions.reduce(function (all, funcName) {
 
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.downloadImage(this.$refs.container, opts);
     },
-    plot: function plot(data) {
+    plot: function plot() {
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.plot(this.$refs.container, this.data, this.internalLayout, this.options);
     },
-    newPlot: function newPlot(data) {
+    newPlot: function newPlot() {
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.newPlot(this.$refs.container, this.data, this.internalLayout, this.options);
     }
   })
