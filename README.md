@@ -67,7 +67,7 @@ The component supports the following props:
 
 All plotly events are captured and emitted as vue events. The names are without the `plotly_` prefix. The following events are supported:
 
-click, hover, unhover, selecting, selected, restyle, relayout, autosize, deselect, doubleclick, redraw, animated
+`click`, `hover`, `unhover`, `selecting`, `selected`, `restyle`, `relayout`, `autosize`, `deselect`, `doubleclick`, `redraw`, `animated`
 
 
 ## Function reference
@@ -78,7 +78,7 @@ For certain scenarios though it, like downloading an image, you need to call the
 
 The following functions are exposed:
 
-restyle, relayout, update, addTraces, deleteTraces, moveTraces, extendTraces, prependTraces, purge, toImage, downloadImage, plot, newPlot
+`restyle`, `relayout`, `update`, `addTraces`, `deleteTraces`, `moveTraces`, `extendTraces`, `prependTraces`, `purge`, `toImage`, `downloadImage`, `plot`, `newPlot`
 
 Some have special handling:
 
