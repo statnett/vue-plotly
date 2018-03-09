@@ -114,7 +114,40 @@ describe('vue-plotly', () => {
       }).then(function() {
         var plots = wrapper.findAll('.trace')
         expect(plots.length).to.eql(2)
+        console.log(wrapper.emitted())
       })
+    })
+  })
+
+  describe('watch shallow vs deep', function() {
+    it('watches deep by default', function(done) {
+      var points = wrapper.findAll('.point')
+      expect(points.length).to.eql(2)
+      data[0].y.splice(1, 1)
+
+      setTimeout(function() {
+        points = wrapper.findAll('.point')
+        expect(points.length).to.eql(1)
+        done()
+      }, 100)
+    })
+
+    it('does not watch deep if watchShallow: true', function(done) {
+      wrapper = shallow(Plotly, {
+        attachToDocument: true,
+        propsData: {
+          data: data,
+          watchShallow: true
+        }
+      })
+      var points = wrapper.findAll('.point')
+      expect(points.length).to.eql(2)
+      data[0].y.splice(1, 1)
+      setTimeout(function() {
+        points = wrapper.findAll('.point')
+        expect(points.length).to.eql(2)
+        done()
+      }, 100)
     })
   })
 })

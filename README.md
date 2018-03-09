@@ -54,11 +54,11 @@ The component supports the following props:
 
   The general options https://github.com/plotly/plotly.js/blob/master/src/plot_api/plot_config.js
 
-* `autoResize` (default: `false`)
+* `autoResize` (default: `false`, not reactive)
 
   If true, the graph resizes when the window is resized.
 
-* `watchShallow` (default: `false`)
+* `watchShallow` (default: `false`, not reactive)
 
   If true, does not trigger a redraw when child properties of data changes, but not the data object itself. Might be needed for large datasets.
 
