@@ -69,7 +69,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.__resizeListener)
-    this.__generalListeners.forEach(obj => this.$refs.container.removeAllListeners(obj.eventName))
+    this.__generalListeners.forEach(obj => this.$refs.container.removeAllListeners(obj.fullName))
     Plotly.purge(this.$refs.container)
   },
   methods: {
@@ -81,7 +81,6 @@ export default {
 
       this.__generalListeners = events.map((eventName) => {
         return {
-          eventName: eventName,
           fullName: 'plotly_' + eventName,
           handler: (...args) => {
             this.$emit.apply(this, [eventName].concat(args))
