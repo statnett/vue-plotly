@@ -62,11 +62,42 @@ The component supports the following props:
 
   If true, does not trigger a redraw when child properties of data changes, but not the data object itself. Might be needed for large datasets.
 
+
+## Events
+
+All plotly events are captured and emitted as vue events. The names are without the `plotly_` prefix. The following events are supported:
+
+click, hover, unhover, selecting, selected, restyle, relayout, autosize, deselect, doubleclick, redraw, animated
+
+
 ## Function reference
 
 All functions defined by plotly are available as methods on the component. However it is **not recommendable** to call most of these manually since it is better to change the reactive properties on the data, layout or options directly, This will in turn trigger an update to the graph. If you do call these manually, the graph data and the props data might not be in sync.
 
 For certain scenarios though it, like downloading an image, you need to call these functions. You call the functions as you would normally, but without the first argument, the DOM element.
+
+The following functions are exposed:
+
+restyle, relayout, update, addTraces, deleteTraces, moveTraces, extendTraces, prependTraces, purge, toImage, downloadImage, plot, newPlot
+
+Some have special handling:
+
+- `toImage`
+
+Has default png format, and graph width and height pre filled, this can be overridden.
+
+- `downloadImage`
+
+Has default png format, and graph width and height pre filled. Filename is set to the title of the graph and with a date postfix. These can all be overridden.
+
+- `plot`
+
+Accepts no arguments. Uses data, layout and options from the props data.
+
+- `newPlot`
+
+Accepts no arguments. Uses data, layout and options from the props data.
+
 
 Read more about plotlyjs function reference here:
 https://plot.ly/javascript/plotlyjs-function-reference/

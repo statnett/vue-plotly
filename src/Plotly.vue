@@ -115,10 +115,10 @@ export default {
 
       return Plotly.downloadImage(this.$refs.container, opts)
     },
-    plot(data) {
+    plot() {
       return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
     },
-    newPlot(data) {
+    newPlot() {
       return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.options)
     }
   }
