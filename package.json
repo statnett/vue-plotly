@@ -4,8 +4,9 @@
   "description": "A vue wrapper for plotly.js",
   "main": "dist/vue-plotly.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
+    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "develop": "cross-env BABEL_ENV=test karma start test/karma.dev.conf.js",
+    "coverage": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
   "repository": {
@@ -43,6 +44,7 @@
     "babel-register": "^6.22.0",
     "babel-runtime": "^6.26.0",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.0",
     "eslint": "^4.18.1",

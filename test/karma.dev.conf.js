@@ -6,7 +6,7 @@
 var webpackConfig = require('./webpack.test.config')
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     // to run in additional browsers:
     // 1. install corresponding karma launcher
@@ -14,7 +14,7 @@ module.exports = function(config) {
     // 2. add it to the `browsers` array below.
     browsers: ['ChromeHeadless'],
     frameworks: ['mocha', 'sinon-chai'],
-    reporters: ['spec', 'coverage', 'junit'],
+    reporters: ['spec'],
     files: ['./index.js'],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
@@ -22,25 +22,6 @@ module.exports = function(config) {
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true
-    },
-    junitReporter: {
-      outputDir: 'junit' // results will be saved as $outputDir/$browserName.xml
-    },
-    coverageReporter: {
-      dir: './coverage',
-      reporters: [{
-          type: 'lcov',
-          subdir: '.'
-        },
-        {
-          type: 'cobertura',
-          subdir: '.',
-          file: 'cobertura.xml'
-        },
-        {
-          type: 'text-summary'
-        }
-      ]
     }
   })
 }
