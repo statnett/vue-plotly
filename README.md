@@ -71,6 +71,7 @@ All plotly events are captured and emitted as vue events. The names are without 
 
 `click`, `hover`, `unhover`, `selecting`, `selected`, `restyle`, `relayout`, `autosize`, `deselect`, `doubleclick`, `redraw`, `animated`
 
+To understand the events read the official documentation https://plot.ly/javascript/plotlyjs-events/
 
 ## Function reference
 
