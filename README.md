@@ -104,3 +104,7 @@ Accepts no arguments. Uses data, layout and options from the props data.
 
 Read more about plotlyjs function reference here:
 https://plot.ly/javascript/plotlyjs-function-reference/
+
+## Licence
+
+MIT
