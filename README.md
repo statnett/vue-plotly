@@ -3,13 +3,32 @@
 ## Install
 
 ```bash
-npm install vue-plotly plotly.js --save
+npm install @statnett/vue-plotly plotly.js --save
 ```
 
 Then use it as a module:
 
 ```bash
 import VuePlotly from '@statnett/vue-plotly'
+```
+
+```js
+export default {
+  data: function () {
+    return {
+      data: [{ x: [1, 3], y: [2, 4] }],
+      layout: {},
+      options: {}
+    }
+  },
+  components: {
+    VuePlotly
+  }
+}
+```
+
+```html
+<vue-plotly :data="data" :layout="layout" :options="options"/>
 ```
 
 ### Webpack
@@ -20,16 +39,16 @@ In short, install `ify-loader` and `transform-loader` and add the following to y
 
 ```js
 module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: [
-          'ify-loader',
-          'transform-loader?plotly.js/tasks/util/compress_attributes.js',
-        ]
-      }
-    ]
-  }
+  rules: [
+    {
+      test: /\.js$/,
+      use: [
+        'ify-loader',
+        'transform-loader?plotly.js/tasks/util/compress_attributes.js',
+      ]
+    }
+  ]
+}
 ```
 
 https://plot.ly/javascript/getting-started/#start-plotting might also be relevant.
