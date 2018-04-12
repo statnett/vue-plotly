@@ -1,7 +1,5 @@
 # vue-plotly [![Build Status](https://travis-ci.org/statnett/vue-plotly.svg?branch=master)](https://travis-ci.org/statnett/vue-plotly) [![Coverage Status](https://coveralls.io/repos/github/statnett/vue-plotly/badge.svg?branch=master)](https://coveralls.io/github/statnett/vue-plotly?branch=master)
 
-> A vue wrapper for plotly.js chart library
-
 ## Install
 
 ```bash
@@ -10,21 +8,19 @@ npm install @statnett/vue-plotly plotly.js --save
 
 Then use it as a module:
 
-```bash
-import VuePlotly from '@statnett/vue-plotly'
-```
-
 ```js
+import VuePlotly from '@statnett/vue-plotly'
+
 export default {
+  components: {
+    VuePlotly
+  },
   data: function () {
     return {
       data: [{ x: [1, 3], y: [2, 4] }],
       layout: {},
       options: {}
     }
-  },
-  components: {
-    VuePlotly
   }
 }
 ```
@@ -90,7 +86,6 @@ All plotly events are captured and emitted as vue events. The names are without 
 
 `click`, `hover`, `unhover`, `selecting`, `selected`, `restyle`, `relayout`, `autosize`, `deselect`, `doubleclick`, `redraw`, `animated`
 
-To understand the events read the official documentation https://plot.ly/javascript/plotlyjs-events/
 
 ## Function reference
 
@@ -123,7 +118,3 @@ Accepts no arguments. Uses data, layout and options from the props data.
 
 Read more about plotlyjs function reference here:
 https://plot.ly/javascript/plotlyjs-function-reference/
-
-## Licence
-
-MIT
