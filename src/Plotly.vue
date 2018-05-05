@@ -75,7 +75,7 @@ export default {
   methods: {
     initEvents() {
       if (this.autoResize) {
-        this.__resizeListener = debounce(this.plot, 200)
+        this.__resizeListener = debounce(this.react, 200)
         window.addEventListener('resize', this.__resizeListener)
       }
 
@@ -116,6 +116,9 @@ export default {
     },
     plot() {
       return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
+    },
+    react() {
+      return Plotly.react(this.$refs.container, this.data, this.internalLayout, this.options)
     },
     newPlot() {
       return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.options)
