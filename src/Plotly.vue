@@ -75,7 +75,7 @@ export default {
   methods: {
     initEvents() {
       if (this.autoResize) {
-        this.__resizeListener = debounce(this.plot, 200)
+        this.__resizeListener = debounce(this.newPlot, 200)
         window.addEventListener('resize', this.__resizeListener)
       }
 
