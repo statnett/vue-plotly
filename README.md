@@ -109,6 +109,8 @@ Has default png format, and graph width and height pre filled. Filename is set t
 
 - `plot`
 
+Deprecated: https://plot.ly/javascript/plotlyjs-function-reference/#plotlyplot
+
 Accepts no arguments. Uses data, layout and options from the props data.
 
 - `newPlot`
