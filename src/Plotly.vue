@@ -118,7 +118,7 @@ export default {
       return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
     },
     newPlot() {
-      return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.options)
+      return Plotly.react(this.$refs.container, this.data, this.internalLayout, this.options)
     }
   }
 }
