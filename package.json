@@ -1,5 +1,5 @@
 {
-  "name": "@mynamewasused/vue-plotly",
+  "name": "@statnett/vue-plotly",
   "version": "0.2.0",
   "description": "A vue wrapper for plotly.js",
   "main": "dist/vue-plotly.js",
