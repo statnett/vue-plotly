@@ -118,6 +118,13 @@ export default {
       return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
     },
     newPlot() {
+      var el = this.$refs.container;
+
+      //if width/height is not specified for toImageButton, default to el.clientWidth/clientHeight
+      if(!this.options) this.options = {};
+      if(!this.options.toImageButtonOptions) this.options.toImageButtonOptions = {};
+      if(!this.options.toImageButtonOptions.width) this.options.toImageButtonOptions.width = el.clientWidth;
+      if(!this.options.toImageButtonOptions.height) this.options.toImageButtonOptions.height = el.clientHeight;
       return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.options)
     }
   }
