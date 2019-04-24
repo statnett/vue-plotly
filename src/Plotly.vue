@@ -102,8 +102,8 @@ export default {
     },
     ...methods,
     toImage(options) {
-      var el = this.$refs.container
-      var opts = defaults(options, {
+      let el = this.$refs.container
+      let opts = defaults(options, {
         format: 'png',
         width: el.clientWidth,
         height: el.clientHeight
@@ -112,8 +112,8 @@ export default {
       return Plotly.toImage(this.$refs.container, opts)
     },
     downloadImage(options) {
-      var el = this.$refs.container
-      var opts = defaults(options, {
+      let el = this.$refs.container
+      let opts = defaults(options, {
         format: 'png',
         width: el.clientWidth,
         height: el.clientHeight,
@@ -126,7 +126,7 @@ export default {
       return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
     },
     newPlot() {
-      var el = this.$refs.container
+      let el = this.$refs.container
       let opts = this.options
 
       // if width/height is not specified for toImageButton, default to el.clientWidth/clientHeight
