@@ -61,7 +61,7 @@ The component supports the following props:
 
 * `data`
 
-  The traces to draw. Will trigger a call to newPlot when changed.
+  The traces to draw. Will trigger a call to react when changed.
 
 * `layout`
 
@@ -114,6 +114,10 @@ Deprecated: https://plot.ly/javascript/plotlyjs-function-reference/#plotlyplot
 Accepts no arguments. Uses data, layout and options from the props data.
 
 - `newPlot`
+
+Accepts no arguments. Uses data, layout and options from the props data.
+
+- `react`
 
 Accepts no arguments. Uses data, layout and options from the props data.
 

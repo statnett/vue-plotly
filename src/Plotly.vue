@@ -56,15 +56,22 @@ export default {
   },
   data() {
     return {
-      internalLayout: this.layout
+      internalLayout: {
+        ...this.layout,
+        datarevision: 1
+      }
     }
   },
   mounted() {
-    this.newPlot()
+    this.react()
     this.initEvents()
 
-    this.$watch('data', this.newPlot, { deep: !this.watchShallow })
-    this.$watch('options', this.newPlot, { deep: !this.watchShallow })
+    this.$watch('data', () => {
+      this.internalLayout.datarevision++
+      this.react()
+    }, { deep: !this.watchShallow })
+
+    this.$watch('options', this.react, { deep: !this.watchShallow })
     this.$watch('layout', this.relayout, { deep: !this.watchShallow })
   },
   beforeDestroy() {
@@ -126,6 +133,9 @@ export default {
       if(!this.options.toImageButtonOptions.width) this.options.toImageButtonOptions.width = el.clientWidth;
       if(!this.options.toImageButtonOptions.height) this.options.toImageButtonOptions.height = el.clientHeight;
       return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.options)
+    },
+    react() {
+      return Plotly.react(this.$refs.container, this.data, this.internalLayout, this.options)
     }
   }
 }

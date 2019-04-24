@@ -1,6 +1,6 @@
 import Plotly from '@/Plotly'
 import {
-  shallow
+  shallowMount
 } from '@vue/test-utils'
 
 describe('vue-plotly', () => {
@@ -12,7 +12,7 @@ describe('vue-plotly', () => {
       x: [1, 2],
       y: [5, 7]
     }]
-    wrapper = shallow(Plotly, {
+    wrapper = shallowMount(Plotly, {
       attachToDocument: true,
       propsData: {
         data: data
@@ -114,7 +114,6 @@ describe('vue-plotly', () => {
       }).then(function() {
         var plots = wrapper.findAll('.trace')
         expect(plots.length).to.eql(2)
-        console.log(wrapper.emitted())
       })
     })
   })
@@ -125,15 +124,15 @@ describe('vue-plotly', () => {
       expect(points.length).to.eql(2)
       data[0].y.splice(1, 1)
 
-      setTimeout(function() {
+      wrapper.vm.$nextTick(() => {
         points = wrapper.findAll('.point')
         expect(points.length).to.eql(1)
         done()
-      }, 100)
+      })
     })
 
     it('does not watch deep if watchShallow: true', function(done) {
-      wrapper = shallow(Plotly, {
+      wrapper = shallowMount(Plotly, {
         attachToDocument: true,
         propsData: {
           data: data,

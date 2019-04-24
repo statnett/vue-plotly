@@ -651,7 +651,7 @@ exports = module.exports = __webpack_require__(26)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1103,30 +1103,38 @@ var methods = functions.reduce(function (all, funcName) {
   },
   data: function data() {
     return {
-      internalLayout: this.layout
+      internalLayout: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, this.layout, {
+        datarevision: 1
+      })
     };
   },
   mounted: function mounted() {
-    this.newPlot();
+    var _this = this;
+
+    this.react();
     this.initEvents();
 
-    this.$watch('data', this.newPlot, { deep: !this.watchShallow });
-    this.$watch('options', this.newPlot, { deep: !this.watchShallow });
+    this.$watch('data', function () {
+      _this.internalLayout.datarevision++;
+      _this.react();
+    }, { deep: !this.watchShallow });
+
+    this.$watch('options', this.react, { deep: !this.watchShallow });
     this.$watch('layout', this.relayout, { deep: !this.watchShallow });
   },
   beforeDestroy: function beforeDestroy() {
-    var _this = this;
+    var _this2 = this;
 
     window.removeEventListener('resize', this.__resizeListener);
     this.__generalListeners.forEach(function (obj) {
-      return _this.$refs.container.removeAllListeners(obj.fullName);
+      return _this2.$refs.container.removeAllListeners(obj.fullName);
     });
     __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.purge(this.$refs.container);
   },
 
   methods: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({
     initEvents: function initEvents() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.autoResize) {
         this.__resizeListener = __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default()(this.newPlot, 200);
@@ -1141,13 +1149,13 @@ var methods = functions.reduce(function (all, funcName) {
               args[_key2] = arguments[_key2];
             }
 
-            _this2.$emit.apply(_this2, [eventName].concat(args));
+            _this3.$emit.apply(_this3, [eventName].concat(args));
           }
         };
       });
 
       this.__generalListeners.forEach(function (obj) {
-        _this2.$refs.container.on(obj.fullName, obj.handler);
+        _this3.$refs.container.on(obj.fullName, obj.handler);
       });
     }
   }, methods, {
@@ -1177,6 +1185,9 @@ var methods = functions.reduce(function (all, funcName) {
     },
     newPlot: function newPlot() {
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.newPlot(this.$refs.container, this.data, this.internalLayout, this.options);
+    },
+    react: function react() {
+      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.react(this.$refs.container, this.data, this.internalLayout, this.options);
     }
   })
 });
