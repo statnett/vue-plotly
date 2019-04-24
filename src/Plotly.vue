@@ -18,7 +18,8 @@ const events = [
   'deselect',
   'doubleclick',
   'redraw',
-  'animated'
+  'animated',
+  'afterplot'
 ]
 
 const functions = [
