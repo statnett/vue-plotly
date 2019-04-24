@@ -651,7 +651,7 @@ exports = module.exports = __webpack_require__(26)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1072,7 +1072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var events = ['click', 'hover', 'unhover', 'selecting', 'selected', 'restyle', 'relayout', 'autosize', 'deselect', 'doubleclick', 'redraw', 'animated'];
+var events = ['click', 'hover', 'unhover', 'selecting', 'selected', 'restyle', 'relayout', 'autosize', 'deselect', 'doubleclick', 'redraw', 'animated', 'afterplot'];
 
 var functions = ['restyle', 'relayout', 'update', 'addTraces', 'deleteTraces', 'moveTraces', 'extendTraces', 'prependTraces', 'purge'];
 
@@ -1184,6 +1184,13 @@ var methods = functions.reduce(function (all, funcName) {
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.plot(this.$refs.container, this.data, this.internalLayout, this.options);
     },
     newPlot: function newPlot() {
+      var el = this.$refs.container;
+
+      //if width/height is not specified for toImageButton, default to el.clientWidth/clientHeight
+      if (!this.options) this.options = {};
+      if (!this.options.toImageButtonOptions) this.options.toImageButtonOptions = {};
+      if (!this.options.toImageButtonOptions.width) this.options.toImageButtonOptions.width = el.clientWidth;
+      if (!this.options.toImageButtonOptions.height) this.options.toImageButtonOptions.height = el.clientHeight;
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.newPlot(this.$refs.container, this.data, this.internalLayout, this.options);
     },
     react: function react() {
