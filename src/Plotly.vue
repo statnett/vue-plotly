@@ -83,7 +83,10 @@ export default {
   methods: {
     initEvents() {
       if (this.autoResize) {
-        this.__resizeListener = debounce(this.react, 200)
+        this.__resizeListener = () => {
+          this.internalLayout.datarevision++
+          debounce(this.react, 200)
+        }
         window.addEventListener('resize', this.__resizeListener)
       }
 

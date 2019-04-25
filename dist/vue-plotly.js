@@ -651,7 +651,7 @@ exports = module.exports = __webpack_require__(26)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1137,7 +1137,10 @@ var methods = functions.reduce(function (all, funcName) {
       var _this3 = this;
 
       if (this.autoResize) {
-        this.__resizeListener = __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default()(this.newPlot, 200);
+        this.__resizeListener = function () {
+          _this3.internalLayout.datarevision++;
+          __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default()(_this3.react, 200);
+        };
         window.addEventListener('resize', this.__resizeListener);
       }
 
@@ -1181,20 +1184,24 @@ var methods = functions.reduce(function (all, funcName) {
       return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.downloadImage(this.$refs.container, opts);
     },
     plot: function plot() {
-      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.plot(this.$refs.container, this.data, this.internalLayout, this.options);
+      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.plot(this.$refs.container, this.data, this.internalLayout, this.getOptions());
+    },
+    getOptions: function getOptions() {
+      var el = this.$refs.container;
+      var opts = this.options;
+
+      // if width/height is not specified for toImageButton, default to el.clientWidth/clientHeight
+      if (!opts) opts = {};
+      if (!opts.toImageButtonOptions) opts.toImageButtonOptions = {};
+      if (!opts.toImageButtonOptions.width) opts.toImageButtonOptions.width = el.clientWidth;
+      if (!opts.toImageButtonOptions.height) opts.toImageButtonOptions.height = el.clientHeight;
+      return opts;
     },
     newPlot: function newPlot() {
-      var el = this.$refs.container;
-
-      //if width/height is not specified for toImageButton, default to el.clientWidth/clientHeight
-      if (!this.options) this.options = {};
-      if (!this.options.toImageButtonOptions) this.options.toImageButtonOptions = {};
-      if (!this.options.toImageButtonOptions.width) this.options.toImageButtonOptions.width = el.clientWidth;
-      if (!this.options.toImageButtonOptions.height) this.options.toImageButtonOptions.height = el.clientHeight;
-      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.newPlot(this.$refs.container, this.data, this.internalLayout, this.options);
+      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.newPlot(this.$refs.container, this.data, this.internalLayout, this.getOptions());
     },
     react: function react() {
-      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.react(this.$refs.container, this.data, this.internalLayout, this.options);
+      return __WEBPACK_IMPORTED_MODULE_1_plotly_js___default.a.react(this.$refs.container, this.data, this.internalLayout, this.getOptions());
     }
   })
 });
