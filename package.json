@@ -1,6 +1,6 @@
 {
   "name": "@statnett/vue-plotly",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A vue wrapper for plotly.js",
   "main": "dist/vue-plotly.js",
   "scripts": {
