@@ -83,7 +83,7 @@ export default {
   methods: {
     initEvents() {
       if (this.autoResize) {
-        this.__resizeListener = debounce(this.newPlot, 200)
+        this.__resizeListener = debounce(this.react, 200)
         window.addEventListener('resize', this.__resizeListener)
       }
 
@@ -123,9 +123,9 @@ export default {
       return Plotly.downloadImage(this.$refs.container, opts)
     },
     plot() {
-      return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.options)
+      return Plotly.plot(this.$refs.container, this.data, this.internalLayout, this.getOptions())
     },
-    newPlot() {
+    getOptions() {
       let el = this.$refs.container
       let opts = this.options
 
@@ -134,10 +134,13 @@ export default {
       if (!opts.toImageButtonOptions) opts.toImageButtonOptions = {}
       if (!opts.toImageButtonOptions.width) opts.toImageButtonOptions.width = el.clientWidth
       if (!opts.toImageButtonOptions.height) opts.toImageButtonOptions.height = el.clientHeight
-      return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, opts)
+      return opts
+    },
+    newPlot() {
+      return Plotly.newPlot(this.$refs.container, this.data, this.internalLayout, this.getOptions())
     },
     react() {
-      return Plotly.react(this.$refs.container, this.data, this.internalLayout, this.options)
+      return Plotly.react(this.$refs.container, this.data, this.internalLayout, this.getOptions())
     }
   }
 }
