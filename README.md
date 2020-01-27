@@ -29,7 +29,49 @@ export default {
 <vue-plotly :data="data" :layout="layout" :options="options"/>
 ```
 
-### Webpack
+### Advanced Usage
+
+Plotly is quite heavy, so you probably don't need the whole package.
+
+Plotly has different bundles available. You have to configure it yourself in your webpack config.
+
+To use only the plotly-basic.js dist package you can configure the webpack resolve alias in your vue.config.js:
+
+```js
+module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'plotly.js$': 'plotly.js/dist/plotly-basic.js'
+      }
+    },
+```
+
+And if you want to add additional locales you can do so in a own plotly configuration file which reexports VuePlotly:
+
+```
+import VuePlotly from '@statnett/vue-plotly'
+import Plotly from 'plotly.js/dist/plotly-basic.js'
+import de from 'plotly.js/lib/locales/de'
+
+Plotly.register(de)
+
+export default VuePlotly
+```
+
+This file can be imported from your application using a normal import or using a new webpackChunk to load async:
+
+```
+@Component({
+  name: "TheChart",
+  components: {
+    Plot: () => import(/* webpackChunkName: "plotly" */ "../plotly")
+  }
+})
+export default class TheChart extends Vue {
+```
+
+### Custom bundle with Webpack
 
 To use vue-plotly with webpack you should see [this example repo](https://github.com/plotly/plotly-webpack) for how to make that work.
 
