@@ -596,7 +596,7 @@ var Component = __webpack_require__(29)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Users\\martinha\\vue-plotly\\src\\Plotly.vue"
+Component.options.__file = "/Users/paulgrock/Code/forks/vue-plotly/src/Plotly.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Plotly.vue: functional components are not supported with templates, they should use render functions.")}
 

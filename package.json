@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.5",
-    "plotly.js": "^1.35.0"
+    "plotly.js": "^2.13.3"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.12",
