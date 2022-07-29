@@ -1,15 +1,15 @@
-# vue-plotly [![Build Status](https://travis-ci.org/statnett/vue-plotly.svg?branch=master)](https://travis-ci.org/statnett/vue-plotly) [![Coverage Status](https://coveralls.io/repos/github/statnett/vue-plotly/badge.svg?branch=master)](https://coveralls.io/github/statnett/vue-plotly?branch=master)
+# vue-plotly [![Build Status](https://travis-ci.org/twelve-co/vue-plotly.svg?branch=master)](https://travis-ci.org/twelve-co/vue-plotly) [![Coverage Status](https://coveralls.io/repos/github/twelve-co/vue-plotly/badge.svg?branch=master)](https://coveralls.io/github/twelve-co/vue-plotly?branch=master)
 
 ## Install
 
 ```bash
-npm install @statnett/vue-plotly plotly.js --save
+npm install @twelve-co/vue-plotly plotly.js --save
 ```
 
 Then use it as a module:
 
 ```js
-import VuePlotly from '@statnett/vue-plotly'
+import VuePlotly from '@twelve-co/vue-plotly'
 
 export default {
   components: {
